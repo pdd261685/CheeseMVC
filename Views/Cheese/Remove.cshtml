@@ -1,0 +1,67 @@
+﻿@{
+
+}
+@if (ViewBag.cheeses.Count == 0)
+{
+    <p>No cheeses yet</p>
+}
+
+@if (ViewBag.cheeses.Count != 0)
+{
+<h3>@ViewBag.title</h3>  
+
+<form method="POST" action="/Cheese/Remove1">
+
+    <select name="cheese1">
+        @foreach (Cheese cheese in ViewBag.cheeses)
+        {
+            <option value="@cheese.CheeseId">@cheese.Name</option>
+        }
+    </select>
+    <br /><br />
+    <input type="submit" value="Remove Selected" />
+
+
+</form>
+<hr />
+<br />
+
+<h3>Remove multiple cheeses from list</h3>
+<form method="post" action="/Cheese/Remove2">
+    <table class="table">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+    </table>
+        <table class="table">
+            @foreach (Cheese cheese in ViewBag.cheeses)
+            {
+
+                <tr>
+                    <td>@cheese.CheeseId</td>
+                    <td>@cheese.Name</td>
+                    <td>@cheese.Description</td>
+                    <td><input type="checkbox" name="cheeseIds" value="@cheese.CheeseId" /> </td>
+
+                </tr>
+
+
+
+            }
+        </table>
+
+
+
+
+        @if (ViewBag.cheeses.Count != 0)
+        {
+            <input type="submit" value="Remove All Selected" />
+        }
+
+
+</form>
+}
+
+
