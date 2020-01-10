@@ -14,13 +14,14 @@ namespace CheeseMVC.ViewModels
             
         }
 
-        public EditCheeseViewModel(Cheese ch)
+        public EditCheeseViewModel(Cheese ch,IEnumerable<CheeseCategory> categories):base(categories)
         {
             //Use cheese object to intialize the viewModel properties.
             Name = ch.Name;
             Description = ch.Description;
-            CheeseId = ch.CheeseId;
-            Type = ch.Type;
+            CheeseId = ch.ID;
+            CategoryID = ch.CategoryID;
+            //Type = ch.Type;
             Rating = ch.Rating;
         }
     }

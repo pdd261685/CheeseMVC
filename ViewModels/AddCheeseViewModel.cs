@@ -22,26 +22,34 @@ namespace CheeseMVC.ViewModels
         [Range(1,5)]
         public int Rating { get; set; }
 
-        public CheeseType Type{ get; set; }
-        public List<SelectListItem> CheeseTypes { get; set; }
+        [Required]
+        [Display(Name = "Category")]
+        public int CategoryID { get; set; }
+
+        public List<SelectListItem> Categories { get; set; }
+        public AddCheeseViewModel(IEnumerable <CheeseCategory> categories)
+        {
+            //CheeseTypes = new List<SelectListItem>();
+            Categories = new List<SelectListItem>();
+            /*Categories.Add(new SelectListItem(){
+                Value = "Default",
+                Text="Default"
+            });*/
+            foreach (CheeseCategory cat in categories)
+            {
+             
+                Categories.Add(new SelectListItem()
+                {
+                    Value = (cat.ID).ToString(),
+                    Text = cat.Name
+                });
+            }
+ 
+        }
+
         public AddCheeseViewModel()
         {
-            CheeseTypes = new List<SelectListItem>();
-            CheeseTypes.Add(new SelectListItem()
-            {
-                Value=((int) CheeseType.Hard).ToString() ,
-                Text= CheeseType.Hard.ToString()
-            });
-            CheeseTypes.Add(new SelectListItem()
-            {
-                Value = ((int)CheeseType.Soft).ToString(),
-                Text = CheeseType.Soft.ToString()
-            });
-            CheeseTypes.Add(new SelectListItem()
-            {
-                Value = ((int)CheeseType.Fake).ToString(),
-                Text = CheeseType.Fake.ToString()
-            });
+
         }
 
         public Cheese CreateCheesse()
@@ -50,10 +58,9 @@ namespace CheeseMVC.ViewModels
             {
                 Name = this.Name,
                 Description = this.Description,
-                Type = this.Type,
+                CategoryID=this.CategoryID,
                 Rating = this.Rating
-            }                
-            ;
+            };
 }
     }
 }

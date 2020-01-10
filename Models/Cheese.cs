@@ -9,12 +9,16 @@ namespace CheeseMVC.Models
     {
         public string Name { get; set; }
         public string Description { get; set; }
-        public int CheeseId { get; set; }
         public int Rating { get; set; }
+        public int ID { get; set; }//to use database
 
-        private static int nextId = 0;
+        //public CheeseType Type { get; set; }
 
-        public CheeseType Type { get; set; }
+        public CheeseCategory Category { get; set; }
+
+
+        IList<CheeseMenu> CheeseMenus { get; set; }
+        public int CategoryID { get; set; }
 
         //enumerate options for data types, so type can hold CheeseType.Mild or Sharp
         /*public enum CheeseType
@@ -32,7 +36,7 @@ namespace CheeseMVC.Models
 
         //Using a default or an empty constructor
         public Cheese() {
-            CheeseId = ++nextId;
+           
         }
        
     }

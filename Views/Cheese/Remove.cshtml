@@ -15,7 +15,7 @@
     <select name="cheese1">
         @foreach (Cheese cheese in ViewBag.cheeses)
         {
-            <option value="@cheese.CheeseId">@cheese.Name</option>
+            <option value="@cheese.ID">@cheese.Name</option>
         }
     </select>
     <br /><br />
@@ -40,19 +40,15 @@
             {
 
                 <tr>
-                    <td>@cheese.CheeseId</td>
+                    <td>@cheese.ID</td>
                     <td>@cheese.Name</td>
                     <td>@cheese.Description</td>
-                    <td><input type="checkbox" name="cheeseIds" value="@cheese.CheeseId" /> </td>
+                    <td><input type="checkbox" name="cheeseIds" value="@cheese.ID" /> </td>
 
                 </tr>
 
-
-
             }
         </table>
-
-
 
 
         @if (ViewBag.cheeses.Count != 0)
